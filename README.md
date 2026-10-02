@@ -1,18 +1,18 @@
 # Murali
 
-Murali is a **Rust-based animation engine** for deterministic, timeline-driven mathematical, AI,
-and teaching visuals. Its engine, scene model, timeline, and renderer are written in Rust and render
-through `wgpu` (Metal, Vulkan, DirectX). Experimental Python bindings are available for early
-authoring and integration work.
+This repository contains Murali's **Rust-based animation engine** for deterministic,
+timeline-driven mathematical, AI, and teaching visuals. Its engine, scene model, timeline, and
+renderer are written in Rust and render through `wgpu` (Metal, Vulkan, DirectX). Experimental
+Python bindings are available for early authoring and integration work.
 
 | You want to | Install | Details |
 | --- | --- | --- |
 | Build with or extend the engine | Rust crate `murali = "0.3.0"` | [Rust engine guide](./RUST.md) |
 | Explore the experimental Python API | `pip install murali-kit==0.3.0` (pulls `murali-engine==0.3.0`) | [Experimental Python support](./PYTHON.md) |
 
-The Rust crate is the primary engine and runtime surface. Use it to embed Murali, extend rendering,
-or build an authoring layer. The Python packages expose an experimental subset of the engine for
-rapid scene authoring and integrations; expect their APIs to change.
+Within this repository, the Rust crate is the primary engine and runtime surface. Use it to embed
+Murali, extend rendering, or run computation- and performance-intensive workloads. The Python
+packages expose an experimental subset of the engine; expect their APIs to change.
 
 Python support is experimental and its APIs are unstable until at least **0.5.0**. For the earlier
 high-level Rust scene-authoring API, see [`murali` 0.2.4](https://crates.io/crates/murali/0.2.4)
@@ -21,6 +21,31 @@ and its [GitHub-native documentation](./documentation/README.md).
 Documentation: [current Rust engine](./RUST.md) · [complete GitHub-native Rust docs](./documentation/README.md)
 · [experimental Python support](./PYTHON.md). These Markdown files are the documentation source of
 truth; this project does not maintain a separate documentation website.
+
+## Project direction: JavaScript for authoring, Rust for performance
+
+Murali began as an exploration of how to build a capable programmatic animation system. After
+experimenting with Python, C++, and Rust, we settled on Rust and developed the animation engine in
+this repository. We then used it to create real content and learn what an authoring system needs in
+practice.
+
+That experience led us to explore a JavaScript-based system. JavaScript proved especially powerful
+for general-purpose authoring because the browser provides an extraordinarily broad visual
+platform: Canvas, SVG, WebGL, WebGPU, text and layout engines, media APIs, and the DOM. It also lets
+Murali build on existing frontend frameworks such as React instead of recreating those capabilities
+inside a native engine.
+
+We also found that current AI systems tend to generate and work with JavaScript more effectively
+than Rust, which makes AI-assisted authoring substantially stronger. Matching the browser's breadth
+inside the Rust engine would require rebuilding a large part of the browser platform.
+
+Rust remains the better tool for computation-heavy and performance-critical work. Depending on the
+workload, native Rust can be orders of magnitude faster and more resource-efficient than a
+JavaScript implementation.
+
+For that reason, the JavaScript-based Murali is now the main system for regular animation
+authoring. This Rust engine remains the performance-oriented Murali implementation for workloads
+that require intensive computation, predictable native performance, or lower-level control.
 
 ## Rust engine
 
