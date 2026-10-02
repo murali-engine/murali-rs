@@ -1,7 +1,7 @@
 # Python API Inventory
 
-This inventory tracks the path from the current Rust engine surface to a coherent Python-first
-`murali-engine` API. Murali `0.3.0` is the target for the first coherent Python release line.
+This inventory tracks the path from the Rust-based animation engine to a coherent experimental
+`murali-engine` API. Murali `0.3.0` is the target for the first coherent Python preview line.
 
 The goal is not to expose every Rust type. The goal is to expose enough stable, general engine
 surface for Python examples, documentation, and `murali-kit` to work naturally.

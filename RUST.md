@@ -1,11 +1,12 @@
-# Murali Rust runtime
+# Murali Rust engine
 
-Murali is Python-first for animation and visual authoring. The Rust crate is the runtime underneath:
-it exists to squeeze maximum performance from the renderer and to support lower-level embedding.
+Murali is a Rust-based animation engine. The `murali` crate contains the scene model, timeline,
+projection layer, and GPU renderer, and is the primary surface for embedding or extending the
+engine.
 
-Use the current `murali` crate when you are embedding Murali in a Rust program, extending the
-runtime, or building something beneath the Python frontend layer. Use Python for normal scene
-authoring and for custom integrations that can sit on `murali-engine` ([PYTHON.md](./PYTHON.md)).
+Use the current `murali` crate when embedding Murali in a Rust program, extending the renderer, or
+building an authoring or integration layer. Experimental Python bindings are also available for
+early adopters ([PYTHON.md](./PYTHON.md)).
 
 If you want the last first-party Rust scene-authoring API, pin
 [`murali` 0.2.4](https://crates.io/crates/murali/0.2.4).
@@ -78,7 +79,7 @@ let square = Scene::new().with_frame(Frame::square());
 Export `width` is pixels. Height follows the scene frame. Sample:
 [murali.toml.example](./murali.toml.example).
 
-## Python frontend from this tree
+## Experimental Python bindings from this tree
 
 The same crate builds `murali-engine` when the `python` feature is on. See
 [PYTHON.md](./PYTHON.md) for `maturin develop`.

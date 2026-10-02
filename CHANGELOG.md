@@ -100,7 +100,7 @@ unstable until 0.5.0. Rust scene authoring stays on the `0.2.4` crate.
   `kv_cache_fill_to` timeline animation.
 - `TensorSnapshot::try_normalized` with LayerNorm and RMSNorm operations, and `NormalizationView`
   for visualizing their input, output, and per-group statistics.
-- Runnable examples and Docusaurus guides for the new conversational, 3D prop, opening, SceneView,
+- Runnable examples and Markdown guides for the new conversational, 3D prop, opening, SceneView,
   and semantic AI APIs.
 
 ### Fixed

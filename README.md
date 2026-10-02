@@ -1,27 +1,42 @@
 # Murali
 
-Murali is a **Python-first animation engine** for deterministic, timeline-driven mathematical, AI,
-and teaching visuals. You author scenes in Python. A Rust engine underneath does the heavy lifting
-for performance, rendering on `wgpu` (Metal, Vulkan, DirectX).
+Murali is a **Rust-based animation engine** for deterministic, timeline-driven mathematical, AI,
+and teaching visuals. Its engine, scene model, timeline, and renderer are written in Rust and render
+through `wgpu` (Metal, Vulkan, DirectX). Experimental Python bindings are available for early
+authoring and integration work.
 
 | You want to | Install | Details |
 | --- | --- | --- |
-| Write Murali scenes | `pip install murali-kit==0.3.0` (pulls `murali-engine==0.3.0`) | [PYTHON.md](./PYTHON.md) |
-| Build an integration or authoring layer | Python packages `murali-engine` + `murali-kit` | [PYTHON.md](./PYTHON.md) |
-| Embed the runtime directly | Rust crate `murali = "0.3.0"` | [Current Rust runtime](./RUST.md) |
+| Build with or extend the engine | Rust crate `murali = "0.3.0"` | [Rust engine guide](./RUST.md) |
+| Explore the experimental Python API | `pip install murali-kit==0.3.0` (pulls `murali-engine==0.3.0`) | [Experimental Python support](./PYTHON.md) |
 
-The public authoring layer is Python. The core renderer is written in Rust to squeeze maximum
-performance from the GPU stack. If you need a custom workflow, integration, or higher-level visual
-toolkit, build it in Python on top of `murali-engine`; use the Rust crate directly only when you
-are embedding or extending the runtime itself.
+The Rust crate is the primary engine and runtime surface. Use it to embed Murali, extend rendering,
+or build an authoring layer. The Python packages expose an experimental subset of the engine for
+rapid scene authoring and integrations; expect their APIs to change.
 
-Python APIs are unstable until **0.5.0**. The last first-party **Rust scene-authoring** API is
-[`murali` 0.2.4](https://crates.io/crates/murali/0.2.4) ([docs](https://muraliengine.com/docs/0.2.4/intro)).
+Python support is experimental and its APIs are unstable until at least **0.5.0**. For the earlier
+high-level Rust scene-authoring API, see [`murali` 0.2.4](https://crates.io/crates/murali/0.2.4)
+and its [GitHub-native documentation](./documentation/README.md).
 
-Documentation: [Rust Edition `0.2.4`](./documentation/README.md) ·
-[current Rust runtime](./RUST.md).
+Documentation: [current Rust engine](./RUST.md) · [complete GitHub-native Rust docs](./documentation/README.md)
+· [experimental Python support](./PYTHON.md). These Markdown files are the documentation source of
+truth; this project does not maintain a separate documentation website.
 
-## Python (authoring + integration)
+## Rust engine
+
+```toml
+[dependencies]
+murali = "0.3.0"
+anyhow = "1"
+glam = "0.33"
+```
+
+Use the crate when embedding Murali in a Rust program, extending the renderer, or building an
+authoring or runtime integration.
+
+More: crate layout, `murali.toml`, Cargo examples, experimental features — **[RUST.md](./RUST.md)**.
+
+## Experimental Python support
 
 ```bash
 python3 -m pip install murali-kit==0.3.0
@@ -39,15 +54,15 @@ scene.add(Circle(radius=1.2, color=GREEN_D).with_stroke(0.04, WHITE))
 scene.preview()
 ```
 
-`murali-engine` is the Python frontend over the Rust runtime: scene, tattvas, timeline, camera,
+`murali-engine` provides experimental Python bindings for scenes, tattvas, timelines, cameras,
 preview, and export. `murali-kit` adds themes, named colors, reusable teaching views, and examples.
 
 More: wheels, frames, export, maturin, kit examples — **[PYTHON.md](./PYTHON.md)**.
 
 ## Development
 
-Murali uses [uv](https://docs.astral.sh/uv/) for its Python development environment and lockfile.
-From a checkout:
+Development of the optional Python bindings uses [uv](https://docs.astral.sh/uv/) for its
+environment and lockfile. From a checkout:
 
 ```bash
 uv sync
@@ -58,20 +73,6 @@ After changing the Rust bindings, rebuild the editable extension with
 `uv run maturin develop --features python`.
 
 End-user wheels remain standard Python packages and do not require uv.
-
-## Rust (runtime)
-
-```toml
-[dependencies]
-murali = "0.3.0"
-anyhow = "1"
-glam = "0.33"
-```
-
-Use the crate directly when you are embedding Murali in a Rust program, extending the renderer, or
-building a lower-level runtime integration.
-
-More: crate layout, `murali.toml`, Cargo examples, experimental features — **[RUST.md](./RUST.md)**.
 
 ## Videos
 

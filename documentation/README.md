@@ -1,11 +1,14 @@
-# Murali Rust Edition documentation
+# Murali documentation
 
-This is the complete, GitHub-native documentation for the last first-party Rust scene-authoring
-release, `murali` `0.2.4`. It covers the features that were available on the hosted documentation
-website, converted to ordinary Markdown that works directly on GitHub and in offline clones.
+This directory, together with the repository's root [README](../README.md),
+[Rust engine guide](../RUST.md), and [experimental Python guide](../PYTHON.md), is Murali's complete
+GitHub-native documentation and the only documentation source of truth. Murali is a Rust-based
+animation engine with experimental Python support. All documentation is ordinary Markdown that
+works directly on GitHub and in offline clones; there is no separate documentation website.
 
-This documentation intentionally excludes the Python API. The repository's `main` branch has
-continued to evolve, so use the `0.2.4` crate when following these pages:
+The detailed scene-authoring pages in this directory target the last frozen high-level Rust
+scene-authoring release, `murali` `0.2.4`. The engine on `main` has continued to evolve, so use the
+`0.2.4` crate when following their code examples:
 
 ```toml
 [dependencies]
@@ -94,5 +97,5 @@ murali = "0.2.4"
 
 - Documentation in this directory is Markdown-only and must render on GitHub.
 - Internal documentation links are relative so the pages work in forks and offline clones.
-- Do not add Docusaurus frontmatter, components, generated routes, or hosted-site dependencies.
+- Do not add site-generator frontmatter, components, generated routes, or hosted-site dependencies.
 - Rust `0.2.4` behavior is the compatibility target for authoring examples in this directory.

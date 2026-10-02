@@ -1,7 +1,7 @@
 # Murali Python Release Checklist
 
-This checklist tracks the work needed to make Murali coherent as a Python-first
-animation system while keeping the Rust engine focused on runtime capabilities.
+This checklist tracks the work needed to make Murali's experimental Python support coherent while
+keeping the Rust-based animation engine as the primary product surface.
 
 ## 0.3.0 Must Ship
 
@@ -38,11 +38,11 @@ animation system while keeping the Rust engine focused on runtime capabilities.
 - [x] Add compatibility checks that verify Murali Kit can import and use the
   required `murali_engine` symbols.
 - [ ] Make the Murali Kit API structure and code organization clean enough for the
-  first serious Python-first release.
+  first serious experimental Python release.
 
 ### Documentation
 
-- [x] Make documentation Python-first.
+- [x] Document Python support clearly as experimental.
 - [x] Structure public docs around two sibling sections:
   - Murali Engine
   - Murali Kit
@@ -50,8 +50,7 @@ animation system while keeping the Rust engine focused on runtime capabilities.
   higher-level animation helpers.
 - [x] Document Murali Engine as the Python runtime and primitive API surface it
   exposes.
-- [x] Keep Core Rust Engine documentation as a secondary subsection under Murali
-  Engine for implementation and architecture reference.
+- [x] Keep Rust engine documentation primary for implementation, embedding, and architecture.
 - [ ] Regenerate public example exports from Python code.
 - [ ] Upload curated video exports where useful and link them from the docs.
 

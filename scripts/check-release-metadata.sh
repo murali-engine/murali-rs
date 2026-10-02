@@ -37,26 +37,10 @@ require_text Cargo.toml 'license = "MIT OR Apache-2.0"'
 require_text README.md "murali = \"$version\""
 require_text README.md "murali-engine==$version"
 require_text README.md 'dual-licensed under either the MIT License or the Apache License'
-require_text docs/docs/installation.md "murali = \"$version\""
-require_text docs/docs/installation.md "murali-engine==$version"
-require_text docs/docs/intro.mdx "murali-engine==$version"
-require_text docs/docusaurus.config.ts "lastVersion: '$version'"
-require_text docs/docusaurus.config.ts "label: 'Next 🚧'"
-
-first_docs_version=$(sed -n 's/.*"\([^"]*\)".*/\1/p' docs/versions.json | head -n 1)
-if [[ "$first_docs_version" != "$version" ]]; then
-  echo "docs/versions.json starts with $first_docs_version, expected $version" >&2
-  exit 1
-fi
-
-for path in \
-  "docs/versioned_docs/version-$version" \
-  "docs/versioned_sidebars/version-$version-sidebars.json"; do
-  if [[ ! -e "$path" ]]; then
-    echo "Missing frozen documentation artifact: $path" >&2
-    exit 1
-  fi
-done
+require_text RUST.md "murali = \"$version\""
+require_text PYTHON.md "murali-engine==$version"
+require_text PYTHON.md "murali-kit==$version"
+require_text documentation/README.md 'only documentation source of truth'
 
 for file in LICENSE-APACHE LICENSE-MIT; do
   if [[ ! -s "$file" ]]; then

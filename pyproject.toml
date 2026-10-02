@@ -5,7 +5,7 @@ build-backend = "maturin"
 [project]
 name = "murali-engine"
 version = "0.3.0"
-description = "Python bindings for Murali Engine."
+description = "Experimental Python bindings for the Rust-based Murali animation engine."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT OR Apache-2.0" }
@@ -28,9 +28,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://muraliengine.com"
+Homepage = "https://github.com/murali-engine/murali"
 Repository = "https://github.com/murali-engine/murali"
-Documentation = "https://muraliengine.com"
+Documentation = "https://github.com/murali-engine/murali/blob/main/README.md"
 
 [dependency-groups]
 dev = [

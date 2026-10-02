@@ -1,15 +1,15 @@
-# Murali Python authoring
+# Experimental Python support
 
-First-party scene authoring is Python. The Rust runtime underneath is built for rendering
-performance, while `murali-engine` exposes the Python frontend layer used by scenes and custom
-integrations.
+Murali is a Rust-based animation engine. `murali-engine` exposes experimental Python bindings for
+scene authoring and integrations, while `murali-kit` adds higher-level helpers. These packages are
+an early-access interface to the Rust engine, not its primary implementation language.
 
 | Package | Import | Role |
 | --- | --- | --- |
-| `murali-engine==0.3.0` | `murali_engine` | Python frontend: scene, primitives, timeline, camera, preview, export |
+| `murali-engine==0.3.0` | `murali_engine` | Experimental bindings: scene, primitives, timeline, camera, preview, export |
 | `murali-kit==0.3.0` | `murali_kit` | Themes, named colors, teaching views, examples |
 
-APIs are unstable until **0.5.0**.
+Python support is experimental. APIs are unstable until at least **0.5.0**.
 
 ## Install
 
@@ -26,9 +26,8 @@ Engine only:
 python3 -m pip install murali-engine==0.3.0
 ```
 
-Use `murali-engine` directly when you are building your own integration or toolkit and do not want
-kit opinions. Use the Rust crate only when you need lower-level runtime embedding
-([RUST.md](./RUST.md)).
+Use `murali-engine` directly when experimenting with your own Python integration or toolkit and you
+do not want kit opinions. Use the Rust crate for the primary engine surface ([RUST.md](./RUST.md)).
 
 ## A first scene
 
@@ -57,7 +56,7 @@ scene.save_png("frame.png", width=1920)
 scene.export_video("scene.mp4", width=1920, fps=60)
 ```
 
-Walkthrough: [Your first scene](https://muraliengine.com/docs/first-scene).
+This file is the canonical guide for the experimental Python interface.
 
 ## Examples
 

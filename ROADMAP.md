@@ -8,11 +8,11 @@ build.
 This roadmap contains future work only. Completed work belongs in release notes and documentation,
 not in the plan.
 
-## P0: Python Coherence And 0.3.0
+## P0: Experimental Python Coherence And 0.3.0
 
-Murali `0.3.0` is the target for the first coherent Python-first release line. The goal is for
-`murali-engine` to feel like a real Python library rather than a partial Rust binding, and for
-`murali-kit` examples to run against it without local setup surprises.
+Murali `0.3.0` is the target for the first coherent experimental Python release line. The goal is
+for `murali-engine` to provide useful bindings to the Rust engine, and for `murali-kit` examples to
+run against it without local setup surprises.
 
 - Freeze the intended Python API shape for scenes, objects, timelines, layout, preview, export,
   and examples.
@@ -29,12 +29,12 @@ Murali `0.3.0` is the target for the first coherent Python-first release line. T
   backgrounds, fonts, materials, and conservative renderer defaults.
 - Port examples in stages: basic shapes, text, timelines, layout, axes, tables, 3D, scene views,
   and advanced demos.
-- Use the examples as the backbone for Python documentation: quickstart, concepts, API guide,
-  `murali-kit` guide, and the hidden Core Rust Engine reference.
+- Use the examples as the backbone for experimental Python documentation: quickstart, concepts,
+  API guide, and `murali-kit` guide alongside the primary Rust engine reference.
 - Add release confidence checks for Python import, Python examples, `murali-kit` examples, Maturin
   wheel builds, and normal Rust tests.
 
-The working inventory for this effort lives in `docs/internal/python-api-inventory.md`.
+The working inventory for this effort lives in `documentation/internal/python-api-inventory.md`.
 
 ## P0: Reliability And Quality Gates
 

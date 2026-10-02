@@ -78,15 +78,15 @@ Update the same version in:
 - `Cargo.lock` (`cargo update -p murali` or a normal build that rewrites the lock)
 - `pyproject.toml`
 - `CHANGELOG.md`
-- install pins in `README.md`, `docs/docs/intro.mdx`, and `docs/docs/installation.md`
+- install pins in `README.md`, `RUST.md`, and `PYTHON.md`
 
 ```bash
-rg "$VERSION" Cargo.toml Cargo.lock pyproject.toml README.md docs/docs
+rg "$VERSION" Cargo.toml Cargo.lock pyproject.toml README.md RUST.md PYTHON.md
 scripts/check-release-metadata.sh
 ```
 
-That script checks crate/Python pins, licenses, `lastVersion` matching the crate, and a Next
-docs line. Historical 0.2.x pages stay in the version dropdown.
+That script checks the crate/Python pins and licenses. The GitHub-native Markdown documentation is
+the only documentation source of truth.
 
 ## 2. Checks
 
@@ -97,14 +97,14 @@ cargo test --features python python
 cargo clippy --all-targets --all-features -- -A warnings -D clippy::correctness -D clippy::suspicious
 cargo check --no-default-features --all-targets
 RUSTDOCFLAGS="-D warnings" cargo doc --no-deps --all-features
-npm run build --prefix docs
 scripts/check-release-metadata.sh
 cargo package --list
 cargo publish --dry-run
 uv lock --check
 ```
 
-Review `cargo package --list`. The crate excludes `docs/**`, `examples/**`, and `RELEASE.md`.
+Review `cargo package --list`. The crate excludes `documentation/**`, `examples/**`, and
+`RELEASE.md`.
 
 A local wheel is optional and only for the machine you are on:
 
@@ -138,7 +138,6 @@ git push origin main
 git push origin "v${VERSION}"
 ```
 
-Pushing `main` deploys docs via `.github/workflows/deploy.yml`.
 Pushing `v${VERSION}` runs `.github/workflows/wheels.yml` and, if every platform job passes,
 uploads wheels and the sdist to PyPI.
 
@@ -179,35 +178,17 @@ Confirm all platform wheels are listed:
 https://pypi.org/project/murali-engine/#files
 https://crates.io/crates/murali
 https://github.com/murali-engine/murali/releases
-https://muraliengine.com/docs/intro
+https://github.com/murali-engine/murali/blob/main/README.md
 ```
 
 Then release kit: [murali-kit RELEASE.md](https://github.com/murali-engine/murali-kit/blob/main/RELEASE.md).
 
-## Docs Freeze
+## Documentation
 
-After a named release, lock that docs set and put ongoing work under Next:
-
-```bash
-cd docs
-npm ci
-npm run docusaurus -- docs:version ${VERSION}
-```
-
-That copies `docs/docs/` to `versioned_docs/version-${VERSION}`. Then in `docusaurus.config.ts`:
-
-```ts
-lastVersion: '${VERSION}',
-versions: {
-  current: {
-    label: 'Next 🚧',
-    path: 'next',
-  },
-},
-```
-
-`/docs` is the frozen release. `/docs/next` is unreleased. Keep `0.2.4` in the dropdown for Rust
-authoring. Do not freeze on every patch.
+Update `README.md`, `RUST.md`, `PYTHON.md`, and relevant files under `documentation/` in the same
+release commit. All documentation must remain ordinary Markdown with relative internal links so it
+works on GitHub and in offline clones. Do not add a documentation site or generated documentation
+copy.
 
 ## Do Not
 

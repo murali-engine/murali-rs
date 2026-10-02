@@ -1,6 +1,6 @@
 # Theme Boundary
 
-This note defines the theme split for the Python-first Murali direction.
+This note defines the theme split for Murali's experimental Python support.
 
 ## Decision
 

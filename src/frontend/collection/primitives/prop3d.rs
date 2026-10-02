@@ -9,7 +9,7 @@ use crate::frontend::layout::{Bounded, Bounds};
 use crate::projection::{Mesh, Project, ProjectionCtx, RenderPrimitive};
 use crate::resource::texture::TextureImage;
 
-const ASSET_HELP: &str = "See https://muraliengine.com/docs/3d-prop-assets for reliable free 3D prop sources and asset troubleshooting.";
+const ASSET_HELP: &str = "See https://github.com/murali-engine/murali/blob/main/documentation/3d-prop-assets.md for reliable free 3D prop sources and asset troubleshooting.";
 
 /// A static 3D prop loaded from a local `.glb` or `.gltf` file.
 ///
@@ -352,7 +352,11 @@ mod tests {
     #[test]
     fn missing_file_error_points_to_asset_help() {
         let error = Prop3D::from_glb("assets/props/does-not-exist.glb").unwrap_err();
-        assert!(error.to_string().contains("/docs/3d-prop-assets"));
+        assert!(
+            error
+                .to_string()
+                .contains("/documentation/3d-prop-assets.md")
+        );
     }
 
     #[test]
