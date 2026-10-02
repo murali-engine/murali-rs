@@ -7,12 +7,13 @@ description = "A Rust animation engine for programmatic, timeline-driven mathema
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/murali-engine/murali"
 homepage = "https://muraliengine.com"
-documentation = "https://muraliengine.com"
+documentation = "https://github.com/murali-engine/murali/blob/main/RUST.md"
 readme = "README.md"
 keywords = ["animation", "AI", "graphics", "math", "visualization"]
 categories = ["graphics", "rendering"]
 exclude = [
   "docs/**",
+  "documentation/**",
   "examples/**",
   "scripts/**",
   "optimization/**",

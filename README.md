@@ -8,7 +8,7 @@ for performance, rendering on `wgpu` (Metal, Vulkan, DirectX).
 | --- | --- | --- |
 | Write Murali scenes | `pip install murali-kit==0.3.0` (pulls `murali-engine==0.3.0`) | [PYTHON.md](./PYTHON.md) |
 | Build an integration or authoring layer | Python packages `murali-engine` + `murali-kit` | [PYTHON.md](./PYTHON.md) |
-| Embed the runtime directly | Rust crate `murali = "0.3.0"` | [RUST.md](./RUST.md) |
+| Embed the runtime directly | Rust crate `murali = "0.3.0"` | [Current Rust runtime](./RUST.md) |
 
 The public authoring layer is Python. The core renderer is written in Rust to squeeze maximum
 performance from the GPU stack. If you need a custom workflow, integration, or higher-level visual
@@ -18,7 +18,8 @@ are embedding or extending the runtime itself.
 Python APIs are unstable until **0.5.0**. The last first-party **Rust scene-authoring** API is
 [`murali` 0.2.4](https://crates.io/crates/murali/0.2.4) ([docs](https://muraliengine.com/docs/0.2.4/intro)).
 
-Site: [muraliengine.com](https://muraliengine.com).
+Documentation: [Rust Edition `0.2.4`](./documentation/README.md) ·
+[current Rust runtime](./RUST.md).
 
 ## Python (authoring + integration)
 

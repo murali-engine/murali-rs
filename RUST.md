@@ -55,7 +55,7 @@ cargo run --example model_inspector -- /absolute/path/to/model.glb --rot-x -20
 ```
 
 Catalog: [examples/README.md](./examples/README.md). Architecture:
-[docs](https://muraliengine.com/docs/architecture/overview).
+[Rust `0.2.4` architecture reference](./documentation/architecture/overview.md).
 
 ## Config
 
